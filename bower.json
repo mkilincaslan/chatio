@@ -1,0 +1,13 @@
+{
+  "name": "chatio",
+  "description": "frontend management",
+  "main": "",
+  "authors": [
+    "Mesut KILINCASLAN <kilincaslanmesut@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/crazycoderTR/chatio",
+  "dependencies": {
+    "angular": "^1.7.8"
+  }
+}
