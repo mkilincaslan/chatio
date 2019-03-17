@@ -1,5 +1,5 @@
 # ChatIO
-resim
+
 # How to Install
 
 ## Clone repo and install dependencies
@@ -10,7 +10,7 @@ resim
 ## Development environments
 Create a file named ".env" in the root directory and fill its contents as follows.
 
-<div style="backgrouund-color: #f6f8fa">
+<div style="backgrouund-color: #000; font-size: 13px">
 DB_STRING = XXX
 
 GOOGLE_LOGIN_CLIENT_ID = XXX
