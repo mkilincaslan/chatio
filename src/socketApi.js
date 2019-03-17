@@ -1,6 +1,6 @@
-const socketio = require('socket.io')
-    , io = socketio()
-    , socketAuthorization = require('../middleware/socketAuthorization');
+const socketio = require('socket.io');
+const io = socketio();
+const socketAuthorization = require('../middleware/socketAuthorization');
 const socketApi = {
     io
 };
@@ -8,6 +8,7 @@ const socketApi = {
 //libs
 const Users = require('./lib/Users');
 const Rooms = require('./lib/Rooms');
+const Messages = require('./lib/Messages');
 
 //Socket Authorization
 io.use(socketAuthorization);
@@ -33,6 +34,18 @@ io.on('connection', socket => {
         io.emit('onlineList', users);
     });
 
+
+    socket.on('newMessage', data => {
+        const messageData = {
+            ...data,
+            userId: socket.request.user._id,
+            username: socket.request.user.name,
+            surname: socket.request.user.surname
+        };
+
+        Messages.upsert(messageData);
+        socket.broadcast.emit('receiveMessage', messageData);
+    });
     socket.on('newRoom', roomName => {
         Rooms.upsert(roomName);
         Rooms.list(rooms => {

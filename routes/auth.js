@@ -6,8 +6,8 @@ router.get('/google', passportGoogle.authenticate(
     'google',
     {
         scope: ['profile'] //information to be requested from google
-    })
-);
+    }
+));
 
 router.get('/google/callback', passportGoogle.authenticate(
     'google',

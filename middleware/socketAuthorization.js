@@ -1,6 +1,6 @@
 const cookiParser = require('cookie-parser')
-    , passport_socket_io = require('passport.socketio')
-    , redis_store = require('../helpers/redisStore');
+    , passportSocketIo = require('passport.socketio')
+    , redisStore = require('../helpers/redisStore');
 
 
 function onAuthorizeSuccess(data, accept){
@@ -20,11 +20,11 @@ function onAuthorizeFail(data, message, error, accept){
     accept(null, false);
 }
 
-module.exports = passport_socket_io.authorize({
+module.exports = passportSocketIo.authorize({
     cookiParser,       // the same middleware you registrer in express
     key:          'connect.sid',       // the name of the cookie where express/connect stores its session_id
     secret:       process.env.SESSION_SECRET_KEY,    // the session_secret to parse the cookie
-    store:        redis_store,        // we NEED to use a sessionstore. no memorystore please
+    store:        redisStore,        // we NEED to use a sessionstore. no memorystore please
     success:      onAuthorizeSuccess,  // *optional* callback on success - read more below
     fail:         onAuthorizeFail,     // *optional* callback on fail/error - read more below
 });

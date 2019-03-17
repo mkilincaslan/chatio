@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const findOrCreate = require('mongoose-find-or-create');
 
 const userSchema = new Schema({
-    googleID:{
+    googleId:{
       type: String,
       unique: true
     },
@@ -13,4 +13,4 @@ const userSchema = new Schema({
 });
 
 userSchema.plugin(findOrCreate);
-module.exports = mongoose.model('Users', userSchema);
+module.exports = mongoose.model('users', userSchema);
